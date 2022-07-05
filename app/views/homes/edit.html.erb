@@ -1,0 +1,40 @@
+<h1>参加予定編集</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>練習場所・日時</th>
+            <th colspan="4">
+              <%= @member.name %>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @practices.each_with_index do |practice, i| %>
+          <tr>
+            <td>
+              <%= @places.find_by(id: practice.spot).name %> <%= practice.date %> <%= practice.start %>-<%= practice.end %>
+            </td>
+              <%= form_with model:@joins[i], url:"/top/#{@member.id}/update", local: true do |form| %>
+            <td>
+            <div class="btn-group" role="group" data-toggle="buttons">
+              <label class="btn btn-primary">
+                <%= form.radio_button :flag, :"1", :checked => (true if @joins[i].flag==1) %>◯
+              </label>
+              <label class="btn btn-primary">
+                <%= form.radio_button :flag, :"2", :checked => (true if @joins[i].flag==2) %>△
+              </label>
+              <label class="btn btn-primary">
+                <%= form.radio_button :flag, :"0", :checked => (true if @joins[i].flag==0) %>×
+              </label>
+
+            </div>
+            <td>
+                <%= hidden_field_tag :practice_id, practice.id %>
+                <%= form.submit '保存', class:"btn btn-success" %>
+            </td>
+              <% end %>
+          </tr>
+        <% end %>
+    </tbody>
+</table>

@@ -1,0 +1,28 @@
+<h1>練習予定一覧</h1>
+<table>
+    <thead>
+        <tr>
+            <th>練習場所・日時</th>
+            <% @members.each do |member|%>
+                <th>
+                  <%= link_to member.name, "/top/#{member.id}/edit" %>
+                </th>
+            <% end %>
+        </tr>
+    </thead>
+    <tbody>
+        <% @practices.each_with_index do |practice, i| %>
+          <tr>
+            <td>
+              <%= @places.find_by(id: practice.spot).name %> <%= practice.date %> <%= practice.start %>-<%= practice.end %>
+            </td>
+            <% @joins[i].each do |join| %>
+              <td>
+                <%= flag_display(join.flag) %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+    </tbody>
+</table>
+<%= link_to "練習予定登録",  "/top/practice_new", class:"btn btn-success" %>
