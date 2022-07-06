@@ -1,0 +1,61 @@
+#heroku login
+heroku login --interactive
+
+#heroku postgresql info
+heroku config:get DATABASE_URL
+
+#heroku postgresql connection
+psql -h ec2-44-205-41-76.compute-1.amazonaws.com -p 5432 apoympqvqrdjfe -d d1ktqvk7v9bk60
+737c8f2145feb8e61389735e39c3993ad0a01571cd950bc15111179c1c6c30b4
+
+#members data
+1|小林|2022-06-03 05:57:12|2022-06-03 05:57:12
+2|北鶴|2022-06-03 06:04:27|2022-06-03 06:04:27
+3|佐藤|2022-06-03 06:29:24|2022-06-03 06:29:24
+
+#members insert
+insert into members values ('1', '小林', NOW(), NOW());
+insert into members values ('2', '北鶴', NOW(), NOW());
+insert into members values ('3', '佐藤', NOW(), NOW());
+
+#places data
+1|野川公園|2022-07-01 05:49:37|2022-07-01 05:49:37
+2|府中の森公園|2022-07-01 05:49:56|2022-07-01 05:49:56
+3|多摩川|2022-07-01 05:50:13|2022-07-01 05:50:13
+
+#places insert
+insert into places values ('1', '野川公園', NOW(), NOW());
+insert into places values ('2', '府中の森公園', NOW(), NOW());
+insert into places values ('3', '多摩川', NOW(), NOW());
+
+#practices data
+1|1|2022-07-01|16|18|2022-06-03 06:07:07|2022-06-03 06:07:07
+2|3|2022-07-07|18|21|2022-06-03 06:07:28|2022-06-03 06:07:28
+3|1|2022-07-02|0|0|2022-07-02 05:58:27.095830|2022-07-02 05:58:27.095830
+
+#practices insert
+insert into practices values ('1', '1', CURRENT_DATE, '16', '18', NOW(), NOW());
+insert into practices values ('2', '3', CURRENT_DATE, '18', '21', NOW(), NOW());
+insert into practices values ('3', '1', CURRENT_DATE, '12', '14', NOW(), NOW());
+
+#joins data
+1|1|1|2|2022-06-15 13:10:46|2022-07-04 12:44:06.065302
+2|2|1|2|2022-06-15 13:11:33|2022-07-04 14:45:45.523148
+3|1|2|1|2022-06-15 13:11:49|2022-06-29 08:17:07.362154
+4|2|2|2|2022-06-15 13:12:16|2022-06-15 13:12:16
+5|1|3|1|2022-06-15 13:12:49|2022-06-15 13:12:49
+6|2|3|2|2022-06-15 13:13:40|2022-06-15 13:13:40
+7|3|1|2|2022-07-02 05:58:27.104411|2022-07-02 07:40:58.742753
+8|3|2|0|2022-07-02 05:58:27.114052|2022-07-02 07:19:20.834932
+9|3|3|0|2022-07-02 05:58:27.120501|2022-07-02 07:41:28.013335
+
+#joins insert
+insert into joins values ('1', '1', '1', '2', NOW(), NOW());
+insert into joins values ('2', '2', '1', '2', NOW(), NOW());
+insert into joins values ('3', '1', '2', '1', NOW(), NOW());
+insert into joins values ('4', '2', '2', '2', NOW(), NOW());
+insert into joins values ('5', '1', '3', '1', NOW(), NOW());
+insert into joins values ('6', '2', '3', '2', NOW(), NOW());
+insert into joins values ('7', '3', '1', '2', NOW(), NOW());
+insert into joins values ('8', '3', '2', '0', NOW(), NOW());
+insert into joins values ('9', '3', '3', '0', NOW(), NOW());

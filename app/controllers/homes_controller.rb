@@ -6,7 +6,7 @@ class HomesController < ApplicationController
     @joins = []
     # for i in 1..@practices.length do
     @practices.each do |practice|
-      @joins.push(Join.where(practice_id: practice.id))
+      @joins.push(Join.where(practice_id: practice.id).order(member_id: :asc))
     end
   end
 
